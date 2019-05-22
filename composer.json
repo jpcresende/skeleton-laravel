@@ -19,7 +19,6 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "spatie/laravel-permission": "^2.37",
-        "tcg/voyager": "^1.2",
         "webpatser/laravel-uuid": "^3.0"
     },
     "require-dev": {
