@@ -2,13 +2,18 @@
 
 namespace App\Domain;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
+/**
+ * Class UsuarioEntity
+ * @package App\Domain
+ */
 class UsuarioEntity extends Authenticatable
 {
     use Notifiable;
+    use HasRoles;
 
     /**
      * @var string
