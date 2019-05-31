@@ -18,7 +18,7 @@ class UsuarioEntity extends Authenticatable
     /**
      * @var string
      */
-    protected $table = 'tb_usuario';
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
