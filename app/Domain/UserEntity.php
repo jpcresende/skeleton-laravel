@@ -4,16 +4,16 @@ namespace App\Domain;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
- * Class UsuarioEntity
+ * Class UserEntity
  * @package App\Domain
  */
-class UsuarioEntity extends Authenticatable
+class UserEntity extends Authenticatable
 {
-    use Notifiable;
-    use HasRoles;
+    use HasApiTokens, HasRoles, Notifiable;
 
     /**
      * @var string

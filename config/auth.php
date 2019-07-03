@@ -1,6 +1,6 @@
 <?php
 
-use App\Domain\UsuarioEntity;
+use App\Domain\UserEntity;
 
 return [
 
@@ -44,7 +44,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
         ],
     ],
@@ -69,7 +69,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Domain\UsuarioEntity::class,
+            'model' => UserEntity::class,
         ],
 
         // 'users' => [

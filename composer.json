@@ -17,6 +17,7 @@
         "botman/tinker": "~1.0",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
+        "laravel/passport": "^7.3",
         "laravel/tinker": "^1.0",
         "spatie/laravel-permission": "^2.37",
         "webpatser/laravel-uuid": "^3.0"
