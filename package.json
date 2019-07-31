@@ -15,9 +15,7 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4"
     },
-    "dependencies": {
-        "botman-tinker": "^0.0.1"
-    },
+    "dependencies": {},
     "name": "lience-admin",
     "description": "Administra\u00e7\u00e3o de Sistemas, Perfis e Usu\u00e1rios"
 }

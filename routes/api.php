@@ -14,5 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
+    var_dump($request);
+    die;
     return $request->user();
 });

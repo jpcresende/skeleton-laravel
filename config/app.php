@@ -159,7 +159,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\BotMan\DriverServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
     ],
 
