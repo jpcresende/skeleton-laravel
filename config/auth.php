@@ -1,6 +1,6 @@
 <?php
 
-use App\Domain\UserEntity;
+use App\Core\Domain\UserEntity;
 
 return [
 
