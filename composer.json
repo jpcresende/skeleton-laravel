@@ -1,6 +1,6 @@
 {
-    "name": "lience/zeus-back-end",
-    "description": "Zeus: Deus grego que possui autoridade sobre demais Deuses.",
+    "name": "liencesoft/skeleton-laravel",
+    "description": "Projeto base arquitetura API modular",
     "keywords": [
         "framework",
         "laravel"
@@ -24,6 +24,12 @@
         "nunomaduro/collision": "^2.0",
         "phpunit/phpunit": "^7.0"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/liencesoft/skeleton-laravel"
+        }
+    ],
     "autoload": {
         "classmap": [
             "database/seeds",
@@ -68,10 +74,4 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "repositories": {
-        "hooks": {
-            "type": "composer",
-            "url": "https://larapack.io"
-        }
-    }
 }
