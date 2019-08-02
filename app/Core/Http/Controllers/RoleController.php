@@ -2,7 +2,7 @@
 
 namespace App\Core\Http\Controllers;
 
-use App\Domain\RoleEntity;
+use App\Core\Domain\RoleEntity;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller

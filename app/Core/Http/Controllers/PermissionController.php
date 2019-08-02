@@ -2,7 +2,7 @@
 
 namespace App\Core\Http\Controllers;
 
-use App\Domain\PermissionEntity;
+use App\Core\Domain\PermissionEntity;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
