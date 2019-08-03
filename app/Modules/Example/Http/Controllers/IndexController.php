@@ -14,6 +14,6 @@ class IndexController extends Controller
 {
     public function index()
     {
-        return 'view.index';
+        return response(['index.controller'], 200);
     }
 }

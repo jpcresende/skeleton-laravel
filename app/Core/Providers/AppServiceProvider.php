@@ -26,8 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(\Illuminate\Database\Eloquent\Factory::class, function () {
             return Factory::construct(\Faker\Factory::create('pt_BR'), [
-                'app/Modules/Admin/Database/Factories',
-                'app/Modules/Site/Databse/Factories',
+                'app/Modules/Example/Database/Factories',
             ]);
         });
     }

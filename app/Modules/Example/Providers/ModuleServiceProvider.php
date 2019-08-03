@@ -36,16 +36,12 @@ class ModuleServiceProvider extends ServiceProvider
 
     private function mapWebRoutes()
     {
-        /**
-         * TODO: ALTERAR NAMESPACES PARA DINAMICO
-         */
         Route::group([
-            'middleware'    => 'web',
-            'namespace'    => 'App\Modules\Example\Http\Controllers',
-            'prefix'    => 'admin',
-            'as'    => 'admin.',
-
-        ], function ($router) {
+            'middleware'    => 'api',
+            'namespace'     => '\App\Modules\Example\Http\Controllers',
+            'prefix'        => 'example',
+            'as'            => 'example.',
+        ], function () {
             require app_path('Modules/Example/Http/routes.php');
         });
     }

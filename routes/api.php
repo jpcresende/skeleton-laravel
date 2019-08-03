@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,18 +11,16 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware' => ['json.response']], function () {
-
-    Route::middleware('auth:api')->get('/user', function (Request $request) {
-        return $request->user();
-    });
-
+Route::group([
+    'middleware' => ['json.response'],
+    'namespace' => '\App\Core\Http\Controllers'
+], function () {
     // public routes
-    Route::post('/login', 'App\Core\Http\Controllers\Api\AuthController@login')->name('login.api');
-    Route::post('/register', 'App\Core\Http\Controllers\Api\AuthController@register')->name('register.api');
+    Route::post('/autenticacao', 'AutenticacaoController@autenticar')->name('autenticacao.autenticar');
 
     // private routes
     Route::middleware('auth:api')->group(function () {
-        Route::get('/logout', 'App\Core\Http\Controllers\Api\AuthController@logout')->name('logout');
+        Route::post('/usuario', 'UserController@store')->name('usuario.cadastrar');
+        Route::get('/sair', 'AutenticacaoController@sair')->name('autenticacao.sair');
     });
 });
