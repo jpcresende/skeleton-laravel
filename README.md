@@ -7,7 +7,10 @@ Initial skeleton for design in Laravel API architecture.
 
 ## Installation
 
-php artisan migrate --path=/app/Modules/Example/Database/Migrations
+Register yours Factories on App\Core\Providers\AppServiceProvider
+
+php artisan migrate --path=/app/Modules/Example/Database/Migrations 
+
 php artisan db:seed --class="App\Modules\Example\Database\Seeds\DefaultSeeder"
 
 ## License

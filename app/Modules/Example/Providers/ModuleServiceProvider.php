@@ -24,6 +24,27 @@ class ModuleServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
+    private function mapWebRoutes()
+    {
+        $strModuleName = $this->getModuleName();
+        Route::group([
+            'middleware' => 'api',
+            'namespace' => '\App\Modules\\' . $strModuleName . '\Http\Controllers',
+            'prefix' => strtolower($strModuleName),
+            'as' => strtolower($strModuleName) . '.',
+        ], function () {
+            require app_path('Modules/' . $this->getModuleName() . '/Http/routes.php');
+        });
+    }
+
+    /**
+     * @return string
+     */
+    private function getModuleName(): string
+    {
+        return array_slice(explode('/', __DIR__), -2, 1)[0];
+    }
+
     /**
      * Register any application services.
      *
@@ -32,17 +53,5 @@ class ModuleServiceProvider extends ServiceProvider
     public function register()
     {
         //
-    }
-
-    private function mapWebRoutes()
-    {
-        Route::group([
-            'middleware'    => 'api',
-            'namespace'     => '\App\Modules\Example\Http\Controllers',
-            'prefix'        => 'example',
-            'as'            => 'example.',
-        ], function () {
-            require app_path('Modules/Example/Http/routes.php');
-        });
     }
 }
