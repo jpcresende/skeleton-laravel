@@ -7,8 +7,9 @@ Initial skeleton for design in Laravel API architecture.
 
 ## Installation
 
-Register yours Factories on App\Core\Providers\AppServiceProvider
-
+Register each module provider on config/app.php file on 'providers' array
+    App\Modules\Example\Providers\ModuleServiceProvider::class,
+    
 composer install
 
 php artisan passport:keys
@@ -16,6 +17,8 @@ php artisan passport:keys
 php artisan migrate --path=/app/Modules/Example/Database/Migrations 
 
 php artisan db:seed --class="App\Modules\Example\Database\Seeds\DefaultSeeder"
+
+If needed register yours Factories on App\Core\Providers\AppServiceProvider
 
 ## License
 
