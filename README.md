@@ -9,6 +9,10 @@ Initial skeleton for design in Laravel API architecture.
 
 Register yours Factories on App\Core\Providers\AppServiceProvider
 
+composer install
+
+php artisan passport:keys
+
 php artisan migrate --path=/app/Modules/Example/Database/Migrations 
 
 php artisan db:seed --class="App\Modules\Example\Database\Seeds\DefaultSeeder"
