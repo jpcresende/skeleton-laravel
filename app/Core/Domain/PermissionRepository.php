@@ -1,10 +1,21 @@
 <?php
 
 
-namespace App\Core\Domain;
+use App\Core\Domain\AbstractRepository;
+use Illuminate\Database\Eloquent\Model;
 
-
-class PermissionRepository
+/**
+ * Class PermissionRepository
+ * @package App\Core\Domain
+ */
+class PermissionRepository extends AbstractRepository
 {
-
+    /**
+     * UserRepository constructor.
+     * @param Model $model
+     */
+    public function __construct(Model $model)
+    {
+        parent::__construct($model);
+    }
 }

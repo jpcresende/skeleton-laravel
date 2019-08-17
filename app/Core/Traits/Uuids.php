@@ -6,11 +6,10 @@ use Webpatser\Uuid\Uuid;
 
 /**
  * Trait Uuids
- * @package App
+ * @package App\Core\Traits
  */
 trait Uuids
 {
-
     /**
      * Boot function from laravel.
      */

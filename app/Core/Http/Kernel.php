@@ -41,6 +41,10 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+        'auth' => [
+            'autorizacao' => \App\Core\Http\Middleware\AutorizacaoListener::class,
+        ]
     ];
 
     /**
@@ -60,6 +64,19 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'json.response' => \App\Core\Http\Middleware\ForceJsonResponse::class,
+        'autorizacao' => \App\Core\Http\Middleware\AutorizacaoListener::class,
+    ];
+
+    /**
+     * Ordem de execucao dos middleware
+     *
+     * Isso permite que o usuario autenticado já esteja definido ao
+     * verificar se tem autorizacao para acessar a API
+     *
+     * @var array
+     */
+    protected $middlewarePriority = [
+        'auth' => \App\Core\Http\Middleware\Authenticate::class,
+        'autorizacao' => \App\Core\Http\Middleware\AutorizacaoListener::class,
     ];
 }

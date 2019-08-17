@@ -12,15 +12,19 @@
 */
 
 Route::group([
-    'middleware' => ['json.response'],
+    'middleware' => 'api',
     'namespace' => '\App\Core\Http\Controllers'
 ], function () {
     // public routes
-    Route::post('/autenticacao', 'AutenticacaoController@autenticar')->name('autenticacao.autenticar');
+    Route::post('/login', 'AutenticacaoController@login')->name('autenticacao.login');
 
     // private routes
-    Route::middleware('auth:api')->group(function () {
-        Route::post('/usuario', 'UserController@store')->name('usuario.cadastrar');
-        Route::get('/sair', 'AutenticacaoController@sair')->name('autenticacao.sair');
+    Route::middleware('auth')->group(function () {
+        Route::get('/logout', 'AutenticacaoController@logout')->name('autenticacao.logout');
+
+        Route::post('/user', 'UserController@store')->name('user.store');
+
+        Route::post('/user/role', 'ModelHasRoleController@store')->name('modelrole.store');
+        Route::delete('/user/role', 'ModelHasRoleController@destroy')->name('modelrole.destroy');
     });
 });

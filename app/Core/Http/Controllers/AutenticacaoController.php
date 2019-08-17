@@ -17,7 +17,7 @@ class AutenticacaoController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function autenticar(Request $request)
+    public function login(Request $request)
     {
         $user = UserEntity::where('email', $request->email)->first();
 
@@ -40,7 +40,7 @@ class AutenticacaoController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function sair(Request $request)
+    public function logout(Request $request)
     {
         $token = $request->user()->token();
         $token->revoke();

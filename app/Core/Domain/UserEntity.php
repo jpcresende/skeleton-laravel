@@ -15,6 +15,8 @@ class UserEntity extends Authenticatable
 {
     use HasApiTokens, HasRoles, Notifiable;
 
+    const MODEL_TYPE = 'App\Core\Domain\UserEntity';
+
     /**
      * @var string
      */

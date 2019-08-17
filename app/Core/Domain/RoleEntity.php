@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class RoleEntity extends Model
 {
+    const GUARD_NAME = 'api';
+
     /**
      * @var string
      */
