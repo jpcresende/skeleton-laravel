@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             'App\Core\Http\Controllers\UserController@store',
             'App\Core\Http\Controllers\ModelHasRoleController@store',
             'App\Core\Http\Controllers\ModelHasRoleController@destroy',
+            'App\Core\Http\Controllers\ModelHasRoleController@index',
+            'App\Core\Http\Controllers\RoleController@index',
         ];
         foreach ($arrayPermission as $strName) {
             DB::table('permissions')->insert([

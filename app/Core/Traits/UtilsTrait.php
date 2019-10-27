@@ -22,4 +22,19 @@ trait UtilsTrait
         }
         return $mixValue;
     }
+
+    /**
+     * @param null $mixValue
+     * @return DateTime|null
+     */
+    public static function convertDateTime($mixValue = null): ?DateTime
+    {
+        if (is_string($mixValue)) {
+            $mixValue = DateTime::createFromFormat('Y-m-d H:i:s', $mixValue);
+        }
+        if (!($mixValue instanceof DateTime)) {
+            $mixValue = null;
+        }
+        return $mixValue;
+    }
 }

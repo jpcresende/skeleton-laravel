@@ -3,6 +3,7 @@
 namespace App\Core\Http\Controllers;
 
 use App\Core\Domain\PermissionEntity;
+use App\Core\Exceptions\BusinessException;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
@@ -46,7 +47,10 @@ class PermissionController extends Controller
      */
     public function show(PermissionEntity $permissionEntity)
     {
-        //
+        if (!$permissionEntity) {
+            throw new BusinessException(BusinessException::INVALID_ID, 'Permissão', 404);
+        }
+        return response($permissionEntity);
     }
 
     /**

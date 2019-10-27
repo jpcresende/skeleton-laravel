@@ -2,6 +2,8 @@
 
 namespace App\Core\Domain;
 
+use App\Core\Notifications\MailPasswordResetNotification;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -11,7 +13,7 @@ use Spatie\Permission\Traits\HasRoles;
  * Class UserEntity
  * @package App\Domain
  */
-class UserEntity extends Authenticatable
+class UserEntity extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasRoles, Notifiable;
 
@@ -39,4 +41,15 @@ class UserEntity extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param string $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new MailPasswordResetNotification($token));
+    }
 }

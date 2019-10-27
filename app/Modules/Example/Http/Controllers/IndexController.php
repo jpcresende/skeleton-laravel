@@ -14,6 +14,6 @@ class IndexController extends Controller
 {
     public function index()
     {
-        return response(['index.controller'], 200);
+        return response()->json('index.controller', 200);
     }
 }

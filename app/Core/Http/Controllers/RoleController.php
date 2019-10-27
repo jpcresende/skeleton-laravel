@@ -3,18 +3,22 @@
 namespace App\Core\Http\Controllers;
 
 use App\Core\Domain\RoleEntity;
+use App\Core\Exceptions\BusinessException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Support\Collection
      */
     public function index()
     {
-        //
+        return response(['data' => DB::table('roles as r')
+            ->select(
+                'r.id',
+                'r.name'
+            )->get()]);
     }
 
     /**
@@ -46,7 +50,10 @@ class RoleController extends Controller
      */
     public function show(RoleEntity $roleEntity)
     {
-        //
+        if (!$roleEntity) {
+            throw new BusinessException(BusinessException::INVALID_ID, 'Perfil', 404);
+        }
+        return response($roleEntity);
     }
 
     /**

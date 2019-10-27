@@ -4,6 +4,7 @@
 namespace App\Core\Http\Controllers;
 
 use App\Core\Domain\UserEntity;
+use App\Core\Exceptions\BusinessException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -27,12 +28,10 @@ class AutenticacaoController extends Controller
                 $response = ['token' => $token];
                 return response($response, 200);
             } else {
-                $response = "Senha incorreta";
-                return response($response, 422);
+                throw new BusinessException(BusinessException::INVALID_PARAM, 'Senha', 422);
             }
         } else {
-            $response = 'Usuário não encontrado';
-            return response($response, 404);
+            throw new BusinessException(BusinessException::INVALID_ID, 'E-mail', 404);
         }
     }
 

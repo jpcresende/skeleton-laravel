@@ -41,7 +41,6 @@ abstract class AbstractValidate
      */
     public function validarCpf(array $arrParams, string $strEntidade, $strIdExcecao = ''): void
     {
-        $this->validarCpfUnico($arrParams, $strEntidade, $strIdExcecao);
         if (Validator::make($arrParams,
                 ['co_cpf' => 'nullable|string|max:11|min:11'])->fails() ||
             $this->isCpfInvalido($arrParams)
@@ -73,9 +72,8 @@ abstract class AbstractValidate
      * @param $strEntidade
      * @param string $strIdExcecao
      */
-    private function validarCpfUnico(array $arrParams, string $strEntidade, $strIdExcecao = ''): void
+    public function validarCpfUnico(array $arrParams, string $strEntidade, $strIdExcecao = ''): void
     {
-        ;
         if (Validator::make($arrParams,
             ['co_cpf' => 'unique:' . $strEntidade . ',co_cpf' . $this->getExcept($strEntidade, $strIdExcecao)])->fails()
         ) {
@@ -106,7 +104,7 @@ abstract class AbstractValidate
      * @param string $strIdExcecao
      * @return string
      */
-    private function getExcept(?string $strEntidade, $strIdExcecao = ''): string
+    protected function getExcept(?string $strEntidade, $strIdExcecao = ''): string
     {
         if (empty($strEntidade) || empty($strIdExcecao)) {
             return '';
@@ -132,6 +130,19 @@ abstract class AbstractValidate
         $arrParams['dt_nascimento'] = isset($arrParams['dt_nascimento']) ? U::convertDate($arrParams['dt_nascimento']) : null;
         if (Validator::make($arrParams, ['dt_nascimento' => 'nullable|after:date'])->fails()) {
             throw new BusinessException(BusinessException::INVALID_PARAM, 'Data de Nascimento');
+        }
+    }
+
+    /**
+     * @param $arrParams
+     * @throws BusinessException
+     */
+    public function validarFotoObrigatorio($arrParams): void
+    {
+        if (Validator::make($arrParams,
+            ['tx_foto' => 'string|required'])->fails()
+        ) {
+            throw new BusinessException(BusinessException::INVALID_PARAM, 'Foto');
         }
     }
 
