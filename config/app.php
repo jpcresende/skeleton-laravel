@@ -166,6 +166,7 @@ return [
          * Modules Providers...
          */
         App\Modules\Example\Providers\ModuleServiceProvider::class,
+        App\Modules\Cliente\Providers\ModuleServiceProvider::class,
     ],
 
     /*
